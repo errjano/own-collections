@@ -1,0 +1,10 @@
+Django>=4.0,<5.0
+django-flat-json-widget
+django-cors-headers
+graphene-django
+gunicorn
+mysqlclient
+requests
+redis
+pymysql
+mysql-connector

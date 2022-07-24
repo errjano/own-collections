@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    build: .
+    image: asdev/collections-manager:latest
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./src/:/code
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - ./conf/.env
+
+  redis:
+    image: redis
+
+  db:
+    image: mariadb:latest
+    env_file:
+      - ./conf/.env
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
